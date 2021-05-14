@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stilus.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <ul>
+            <li><a class="active" href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+          </ul>
+        <h2>Famennyiség kalkulátor</h2>
+            <form id="form">
+                <label for="fa">Farönk térfogat számító</label>
+                <br><br>
+                <select name="fafelek" id="fafelek">
+                    <option value="Huber">Huber</option>
+                    <option value="Doyle">Doyle</option>
+                    <option value="Scribner">Scribner</option>
+                    <option value="Newton">Newton</option>
+                </select>
+            </form>
+                <p id="kimenet">Térfogat (Kéregmentes): --- m³</p>
+                <p>Középső átmérő</p>
+                <input type="number" id="atmero" placeholder="cm">
+                <br>
+                <p>Hosszúság</p>
+                <input type="number" id="hosszusag" placeholder="m">
+                <p>Mennyiség(db)</p>
+                <input type="number" id="mennyiseg" placeholder="1">
+                <br><br>
+
+                <button id="szamol">Számol</button>
+                <br><br>
+                <p>A végső érték megközelítő, a változó tényezőknek köszönhetően eltérhet az aktuális értéktől.</p>
+
+                <script>
+                    const fajtak =document.getElementById("fajtak");
+                    const szamol = document.getElementById("szamol");
+                    const terfogat=document.getElementById("terfogat");
+                    const atmero=document.getElementById("atmero");
+                    const hosszusag=document.getElementById("hosszusag");
+                    const mennyiseg=document.getElementById("mennyiseg");
+
+                    function szamolHuber(){
+                        let egy= ((Math.pow((((atmero.value/100)+hosszusag.value)*1.5),2))*Math.PI)/4 ;
+                        let ketto=((Math.pow(atmero.value/100,2))*Math.PI)/4; 
+                        let osszeg=Math.round(((egy+ketto)/2)*hosszusag.value);
+                        kimenet.innerHTML=osszeg;
+                        };
+
+                        szamol.addEventListener("click", szamolHuber);
+                </script>
+    </div>
+</body>
+</html>
